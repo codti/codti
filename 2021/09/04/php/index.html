@@ -79,13 +79,15 @@
 
 
 
-<meta name="description" content="不登高山，不知天之高也">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Codti">
-<meta property="og:url" content="http://codti.github.io/index.html">
+<meta name="description" content="php-fpmcgi与fastcgi的关系和区别 cgi一种网关协议，他规定了cgi程序和web程序怎样交互 php-cgi通过php实现了cgi协议，可以用他来进行php和web服务之间的通信，确定是每次请求都需要启动一次cgi然后退出 fastcgi也是一种协议，他是cgi的升级版本，他会提前启动多个进程等待请求的到来，处理完以后也不会退出 fpm实现了fastcgi的php进程管理器  fp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php">
+<meta property="og:url" content="http://codti.github.io/2021/09/04/php/index.html">
 <meta property="og:site_name" content="Codti">
-<meta property="og:description" content="不登高山，不知天之高也">
+<meta property="og:description" content="php-fpmcgi与fastcgi的关系和区别 cgi一种网关协议，他规定了cgi程序和web程序怎样交互 php-cgi通过php实现了cgi协议，可以用他来进行php和web服务之间的通信，确定是每次请求都需要启动一次cgi然后退出 fastcgi也是一种协议，他是cgi的升级版本，他会提前启动多个进程等待请求的到来，处理完以后也不会退出 fpm实现了fastcgi的php进程管理器  fp">
 <meta property="og:locale">
+<meta property="article:published_time" content="2021-09-04T10:55:47.000Z">
+<meta property="article:modified_time" content="2021-09-04T12:14:47.551Z">
 <meta property="article:author" content="Codti">
 <meta property="article:tag" content="面试,大厂,高频">
 <meta name="twitter:card" content="summary">
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://codti.github.io/"/>
+  <link rel="canonical" href="http://codti.github.io/2021/09/04/php/"/>
 
 
 
 
 
-  <title>Codti</title>
+  <title>php | Codti</title>
   
 
 
@@ -143,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -247,155 +248,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://codti.github.io/2021/09/04/redis/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="codti">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/seven.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Codti">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/09/04/redis/" itemprop="url">redis</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-04T18:55:52+08:00">
-                2021-09-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3><h4 id="底层实现hashtable"><a href="#底层实现hashtable" class="headerlink" title="底层实现hashtable"></a>底层实现hashtable</h4><ul>
-<li>哈希算法 - rehash（渐进式hash）<ul>
-<li>指向两个空间<ul>
-<li>空间一当前的存储空间</li>
-<li>空间二rehash的存储空间</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>步骤<ul>
-<li>申请内存<ul>
-<li>将内存和对象的指针绑定</li>
-<li>将rehashidx从-1至为0</li>
-<li>查询，修改，删除需要操作老的内存指针和当前新的内存空间，新的内存为之前的内存乘以2</li>
-<li>新增需要直接操作新的内存空间</li>
-<li>完成将老的空间清空，然后将新老内存指正对调，rehashidx从0至为-1</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="有序集合"><a href="#有序集合" class="headerlink" title="有序集合"></a>有序集合</h3><h4 id="跳表"><a href="#跳表" class="headerlink" title="跳表"></a>跳表</h4><ul>
-<li>压缩表</li>
-<li>散列表</li>
-<li>当有序集合或散列表的元素个数比较少，且元素都是短字符串时，Redis便使用压缩列表作为其底层数据存储结构。</li>
-</ul>
-<h2 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h2><h3 id="一致性hash"><a href="#一致性hash" class="headerlink" title="一致性hash"></a>一致性hash</h3><p><a target="_blank" rel="noopener" href="https://www.zsythink.net/archives/1182">白话一致性hash</a></p>
-<h3 id="哨兵"><a href="#哨兵" class="headerlink" title="哨兵"></a>哨兵</h3>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -425,9 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/09/04/php/" itemprop="url">php</a></h1>
+          <h1 class="post-title" itemprop="name headline">php</h1>
         
 
         <div class="post-meta">
@@ -477,9 +330,7 @@
       
 
       
-        
-          
-            <h2 id="php-fpm"><a href="#php-fpm" class="headerlink" title="php-fpm"></a>php-fpm</h2><h3 id="cgi与fastcgi的关系和区别"><a href="#cgi与fastcgi的关系和区别" class="headerlink" title="cgi与fastcgi的关系和区别"></a>cgi与fastcgi的关系和区别</h3><ol>
+        <h2 id="php-fpm"><a href="#php-fpm" class="headerlink" title="php-fpm"></a>php-fpm</h2><h3 id="cgi与fastcgi的关系和区别"><a href="#cgi与fastcgi的关系和区别" class="headerlink" title="cgi与fastcgi的关系和区别"></a>cgi与fastcgi的关系和区别</h3><ol>
 <li>cgi一种网关协议，他规定了cgi程序和web程序怎样交互</li>
 <li>php-cgi通过php实现了cgi协议，可以用他来进行php和web服务之间的通信，确定是每次请求都需要启动一次cgi然后退出</li>
 <li>fastcgi也是一种协议，他是cgi的升级版本，他会提前启动多个进程等待请求的到来，处理完以后也不会退出</li>
@@ -491,8 +342,6 @@
 <h2 id="zval结构"><a href="#zval结构" class="headerlink" title="zval结构"></a>zval结构</h2><h3 id="php5结构"><a href="#php5结构" class="headerlink" title="php5结构"></a>php5结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">struct _zval_struct &#123;</span><br><span class="line">     union &#123;</span><br><span class="line">          long lval;</span><br><span class="line">          double dval;</span><br><span class="line">          struct &#123;</span><br><span class="line">               char *val;</span><br><span class="line">               int len;</span><br><span class="line">          &#125; str;</span><br><span class="line">          HashTable *ht;</span><br><span class="line">          zend_object_value obj;</span><br><span class="line">          zend_ast *ast;</span><br><span class="line">     &#125; value;                       // 表示存储的值,需要根据type的类型来解析value,string类型使用value.str</span><br><span class="line">     zend_uint refcount__gc;        // 表示被引用的数目</span><br><span class="line">     zend_uchar type;               // 表示什么字段类型 IS_NULL、IS_STRING、IS_ARRAY</span><br><span class="line">     zend_uchar is_ref__gc;         // 表示是否是引用</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="php7结构"><a href="#php7结构" class="headerlink" title="php7结构"></a>php7结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">struct _zval_struct &#123;</span><br><span class="line">	zend_value        value;			/* value */</span><br><span class="line">	union &#123;</span><br><span class="line">		struct &#123;</span><br><span class="line">			ZEND_ENDIAN_LOHI_4(</span><br><span class="line">				zend_uchar    type,			/* active type */</span><br><span class="line">				zend_uchar    type_flags,</span><br><span class="line">				zend_uchar    const_flags,</span><br><span class="line">				zend_uchar    reserved)	    /* call info for EX(This) */</span><br><span class="line">		&#125; v;</span><br><span class="line">		uint32_t type_info;</span><br><span class="line">	&#125; u1;</span><br><span class="line">	union &#123;</span><br><span class="line">		uint32_t     var_flags;</span><br><span class="line">		uint32_t     next;                 /* hash collision chain */</span><br><span class="line">		uint32_t     cache_slot;           /* literal cache slot */</span><br><span class="line">		uint32_t     lineno;               /* line number (for ast nodes) */</span><br><span class="line">		uint32_t     num_args;             /* arguments number for EX(This) */</span><br><span class="line">		uint32_t     fe_pos;               /* foreach position */</span><br><span class="line">		uint32_t     fe_iter_idx;          /* foreach iterator index */</span><br><span class="line">	&#125; u2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-          
-        
       
     </div>
     
@@ -509,156 +358,32 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://codti.github.io/2021/09/03/mysql/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="codti">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/seven.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Codti">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/09/03/mysql/" itemprop="url">mysql</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-03T12:52:28+08:00">
-                2021-09-03
-              </time>
+              <a href="/2021/09/03/mysql/" rel="next" title="mysql">
+                <i class="fa fa-chevron-left"></i> mysql
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
+              <a href="/2021/09/04/redis/" rel="prev" title="redis">
+                redis <i class="fa fa-chevron-right"></i>
+              </a>
             
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h2 id="事物隔离级别"><a href="#事物隔离级别" class="headerlink" title="事物隔离级别"></a>事物隔离级别</h2><blockquote>
-<p>级别隔离从小到大：读未提交&lt;读已提交&lt;可重复读&lt;串行</p>
-</blockquote>
-<ul>
-<li>Read Uncommitted 读未提交<ul>
-<li>出现脏读 - 事务A读取了事务B更新的数据，然后B回滚操作，那么A读取到的数据是脏数据</li>
-</ul>
-</li>
-<li>Read Committed 读提交<ul>
-<li>不可重复度 - 事务 A 多次读取同一数据，事务 B 在事务A多次读取的过程中，对数据作了更新并提交，导致事务A多次读取同一数据时，结果 不一致</li>
-</ul>
-</li>
-<li>Repeatable Read 可重复读<ul>
-<li>幻读 - 系统管理员A将数据库中所有学生的成绩从具体分数改为ABCDE等级，但是系统管理员B就在这个时候插入了一条具体分数的记录，当系统管理员A改结束后发现还有一条记录没有改过来，就好像发生了幻觉一样，这就叫幻读。</li>
-</ul>
-</li>
-<li>Serializable 事务同步，串行</li>
-</ul>
-<h2 id="mysql主从复制原理"><a href="#mysql主从复制原理" class="headerlink" title="mysql主从复制原理"></a>mysql主从复制原理</h2><h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><ol>
-<li>master开启binlog</li>
-<li>slave开启io线程</li>
-<li>读取master的binlog数据，并写入relay log</li>
-<li>通过relay log生成数据</li>
-</ol>
-<!-- ## 复合索引 -->
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -668,142 +393,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://codti.github.io/2021/09/03/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="codti">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/seven.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Codti">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/09/03/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-03T10:43:06+08:00">
-                2021-09-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -811,6 +405,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -831,8 +429,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -903,6 +510,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#php-fpm"><span class="nav-number">1.</span> <span class="nav-text">php-fpm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cgi%E4%B8%8Efastcgi%E7%9A%84%E5%85%B3%E7%B3%BB%E5%92%8C%E5%8C%BA%E5%88%AB"><span class="nav-number">1.1.</span> <span class="nav-text">cgi与fastcgi的关系和区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fpm%E7%9A%84%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">fpm的启动方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E5%8A%A8%E6%80%81"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 动态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E9%9D%99%E6%80%81"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 静态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E6%8C%89%E9%9C%80"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 按需</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zval%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">zval结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#php5%E7%BB%93%E6%9E%84"><span class="nav-number">2.1.</span> <span class="nav-text">php5结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#php7%E7%BB%93%E6%9E%84"><span class="nav-number">2.2.</span> <span class="nav-text">php7结构</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1043,6 +666,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
