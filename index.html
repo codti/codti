@@ -1507,7 +1507,13 @@ func levelOrder(root *TreeNode) [][]int {
 </ol>
 <h3 id="tw如何感知redis实例变化"><a href="#tw如何感知redis实例变化" class="headerlink" title="tw如何感知redis实例变化"></a>tw如何感知redis实例变化</h3><p>这个是zeus在推相应 的配置时， 会给每个redis分片 设置一个key, value为ip， 写到etcd<br>同时 ，  twproxy机器 部署一个etcd的客户端 confd软件， 这个confd实时 监测 上面的key</p>
 <p>在把redis的信息录入redis 哨兵时， 指定的 name就是上面的key,<br>等主从切换后， 哨兵选择出新主后， 会连接 etcd, 通过 key 修改value的值 </p>
-<p>由于tw机器 的confd软件实时 监测etcd， 所以很快感觉上面的key发生变化， 取出新值 后， 重新 产生一份tw所需要的配置文件， 重启</p>
+<p>由于tw机器 的confd软件实时 监测etcd， 所以很快感觉上面的key发生变化，取出新值后，重新产生一份tw所需要的配置文件， 重启</p>
+<h3 id="集群添加group"><a href="#集群添加group" class="headerlink" title="集群添加group"></a>集群添加group</h3><p>步骤</p>
+<ol>
+<li>添加节点</li>
+<li>hash槽重新计算rehash</li>
+<li>将需要迁移的hash槽上的key迁移到新的group上</li>
+</ol>
 
           
         
